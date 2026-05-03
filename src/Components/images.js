@@ -1,0 +1,1 @@
+export const googleGLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUh..."

@@ -1,0 +1,330 @@
+/* BASE */
+*, *::before, *::after { box-sizing: border-box; }
+
+.cs-page {
+  min-height: 100vh;
+  background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #1a1a18;
+}
+
+/* ── HERO ── */
+.cs-hero {
+  width: 100%;
+  height: 340px;
+  background-color: #c8c4bc;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+/* ── DESKTOP TAB BAR ── */
+.cs-tabs-bar {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  height: 48px;
+}
+
+/* CLIENT SERVICES label — fixed width, centered */
+.cs-tabs-label {
+  flex-shrink: 0;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1a1a18;
+  background: none;
+  border: none;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  font-family: inherit;
+  height: 100%;
+}
+.cs-tabs-label--active { border-bottom-color: #1a1a18; }
+.cs-tabs-label:hover { opacity: 0.65; }
+
+/* Scrollable tab area */
+.cs-tabs-scroll {
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+.cs-tabs-scroll::-webkit-scrollbar { display: none; }
+
+.cs-tabs-nav {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Each tab button — fixed min-width forces overflow so arrow appears */
+.cs-tab-btn {
+  flex: 0 0 auto;
+  min-width: 120px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 8px;
+  height: 100%;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: #999;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  margin-bottom: -1px;
+  transition: color 0.15s ease;
+  text-align: center;
+}
+.cs-tab-btn:hover { color: #1a1a18; }
+.cs-tab-btn--active { color: #1a1a18; border-bottom-color: #1a1a18; }
+
+/* Arrow button */
+.cs-tabs-arrow {
+  flex-shrink: 0;
+  width: 34px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-left: 1px solid #e5e5e5;
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  color: #888;
+  font-family: inherit;
+  transition: color 0.15s;
+  padding: 0;
+}
+.cs-tabs-arrow:hover { color: #1a1a18; }
+
+/* ── MOBILE NAV ── */
+.cs-mobile-nav {
+  display: none;
+  padding: 14px 16px 0;
+}
+.cs-mobile-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1a1a18;
+  margin: 0 0 10px;
+}
+
+/* ── PANEL AREA ── */
+.cs-panel-area {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+  text-align: center;
+}
+
+/* ── INTRO TEXT ── */
+.cs-panel-default { width: 100%; }
+.cs-instruction {
+  font-size: 12px;
+  color: #1a1a18;
+  line-height: 1.75;
+  margin: 0 0 2px;
+}
+.cs-instruction--last { margin-bottom: 40px; }
+
+/* ── FORM ── */
+.cs-form { text-align: left; }
+.cs-form-title {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1a1a18;
+  margin: 0 0 28px;
+}
+
+.cs-field { margin-bottom: 20px; }
+
+.cs-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 10px 0;
+  font-size: 12px;
+  font-family: inherit;
+  color: #1a1a18;
+  background: transparent;
+  outline: none;
+  transition: border-bottom-color 0.15s;
+}
+.cs-input:focus { border-bottom-color: #1a1a18; }
+.cs-input::placeholder { color: #aaa; font-size: 12px; }
+
+.cs-select-wrap {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+.cs-select-wrap:focus-within { border-color: #1a1a18; }
+
+.cs-select {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 13px 12px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #888;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.cs-select-arrow {
+  flex-shrink: 0;
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #dcdcdc;
+  font-size: 13px;
+  color: #555;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cs-textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 10px 0;
+  font-size: 12px;
+  font-family: inherit;
+  color: #1a1a18;
+  background: transparent;
+  outline: none;
+  resize: none;
+  transition: border-bottom-color 0.15s;
+}
+.cs-textarea:focus { border-bottom-color: #1a1a18; }
+.cs-textarea::placeholder { color: #aaa; font-size: 12px; }
+
+.cs-attachments {
+  margin: 8px 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cs-attachment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #666;
+  border-bottom: 1px solid #eee;
+  padding: 4px 0;
+}
+.cs-attachment-remove {
+  background: none; border: none;
+  font-size: 10px; color: #aaa; cursor: pointer; padding: 0 2px;
+}
+.cs-attachment-remove:hover { color: #1a1a18; }
+
+.cs-clear-attachment {
+  background: none; border: none;
+  font-size: 10px; letter-spacing: 0.1em;
+  color: #aaa; text-decoration: underline;
+  text-underline-offset: 2px; cursor: pointer;
+  padding: 6px 0 0; font-family: inherit; text-align: left;
+}
+.cs-clear-attachment:hover { color: #1a1a18; }
+
+.cs-attachment-row {
+  display: flex;
+  justify-content: center;
+  margin: 36px 0 14px;
+}
+.cs-add-attachment {
+  background: none; border: none;
+  font-size: 10px; letter-spacing: 0.12em;
+  color: #1a1a18; text-decoration: underline;
+  text-underline-offset: 3px; cursor: pointer;
+  padding: 0; font-family: inherit;
+}
+.cs-add-attachment:hover { opacity: 0.6; }
+
+.cs-submit {
+  margin-top: 16px; width: 100%; padding: 16px;
+  background: #1a1a18; color: #fff; border: none;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; font-family: inherit;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.cs-submit:hover { opacity: 0.75; }
+
+/* ── ACCORDION ── */
+.cs-accordion { text-align: left; border-top: 1px solid #e5e5e5; }
+.cs-accordion-item { border-bottom: 1px solid #e5e5e5; }
+.cs-accordion-trigger {
+  width: 100%; background: none; border: none;
+  padding: 18px 0; display: flex;
+  justify-content: space-between; align-items: center;
+  cursor: pointer; text-align: left; gap: 16px;
+}
+.cs-accordion-question {
+  font-size: 11px; letter-spacing: 0.02em;
+  color: #1a1a18; line-height: 1.5;
+}
+.cs-accordion-icon {
+  font-size: 14px; color: #888; flex-shrink: 0;
+  transition: transform 0.25s ease; display: inline-block;
+}
+.cs-accordion-icon--open { transform: rotate(180deg); }
+.cs-accordion-body {
+  padding: 0 0 18px; font-size: 12px;
+  color: #666; line-height: 1.7;
+}
+
+/* ── TABLET ── */
+@media (max-width: 900px) {
+  .cs-hero { height: 260px; }
+  .cs-tab-btn { min-width: 100px; padding: 0 6px; }
+  .cs-tabs-label { width: 150px; }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .cs-hero { height: 220px; }
+  .cs-tabs-bar { display: none !important; }
+  .cs-mobile-nav { display: block !important; }
+  .cs-panel-area { max-width: 100%; padding: 28px 16px 80px; }
+  .cs-form-title { font-size: 14px; }
+}
+
+.cs-tabs-arrow--left {
+  border-left: none;
+  border-right: 1px solid #e5e5e5;
+}
+
+.cs-tabs-arrow--right {
+  border-left: 1px solid #e5e5e5;
+}

@@ -1,0 +1,211 @@
+/* Overlay */
+.cs-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: csFadeIn 0.25s ease;
+    overflow: hidden;
+    background: transparent;
+}
+
+@keyframes csFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Backdrop — blurred static background */
+.cs-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Modal — dark like ALD */
+.cs-modal {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 460px;
+    padding: 48px 40px 40px;
+    animation: csSlideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes csSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Close Button */
+.cs-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.cs-close:hover { color: #fff; }
+
+/* Title */
+.cs-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 28px;
+}
+
+/* Label */
+.cs-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Dropdown wrapper */
+.cs-dropdown-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Dropdown trigger — dark with white text */
+.cs-dropdown-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s;
+}
+
+.cs-dropdown-trigger:hover { border-color: #555; }
+
+.cs-dropdown-trigger-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 16px;
+}
+
+.cs-dropdown-currency {
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+}
+
+/* Chevron */
+.cs-chevron {
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid #888;
+    border-bottom: 1.5px solid #888;
+    transform: rotate(45deg);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.cs-dropdown-trigger.open .cs-chevron {
+    transform: rotate(-135deg);
+}
+
+/* Dropdown list */
+.cs-dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-top: none;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.cs-dropdown-list::-webkit-scrollbar { width: 3px; }
+.cs-dropdown-list::-webkit-scrollbar-track { background: #111; }
+.cs-dropdown-list::-webkit-scrollbar-thumb { background: #333; }
+
+/* Dropdown item */
+.cs-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: #ccc;
+    cursor: pointer;
+    transition: background 0.15s;
+    letter-spacing: 0.03em;
+}
+
+.cs-dropdown-item:hover { background: #222; color: #fff; }
+.cs-dropdown-item--active { background: #222; color: #fff; font-weight: 600; }
+
+.cs-dropdown-item-currency {
+    color: #666;
+    font-size: 11px;
+}
+
+/* Save Button */
+.cs-save-btn {
+    width: 100%;
+    padding: 15px 0;
+    border: none;
+    background: #fff;
+    color: #111;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.cs-save-btn:hover {
+    background: #e0e0e0;
+}
+
+/* Success state */
+.cs-success {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.cs-success-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 32px;
+}

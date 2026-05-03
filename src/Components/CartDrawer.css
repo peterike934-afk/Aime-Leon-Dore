@@ -1,0 +1,409 @@
+/* CartDrawer.module.css */
+
+/* ── Variables ────────────────────────────────────────────────────── */
+:root {
+  --cd-white: #ffffff;
+  --cd-bg: #f5f4f1;
+  --cd-black: #1a1a1a;
+  --cd-mid: #888888;
+  --cd-light: #e0deda;
+  --cd-sale: #c0392b;
+  --cd-drawer-w: 380px;
+  --cd-font-body: "Geist Mono", "SF Mono", "Fira Code", monospace;
+  --cd-font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+
+/* ── Overlay ──────────────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 90;
+  pointer-events: none;
+  transition: background 0.35s ease;
+}
+
+.overlayOpen {
+  background: rgba(0, 0, 0, 0.28);
+  pointer-events: all;
+}
+
+/* ── Drawer shell ─────────────────────────────────────────────────── */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--cd-drawer-w);
+  max-width: 100vw;
+  background: var(--cd-white);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -6px 0 40px rgba(0, 0, 0, 0.07);
+  font-family: var(--cd-font-body);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--cd-black);
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+/* ── Header ───────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--cd-light);
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--cd-black);
+  transition: opacity 0.15s;
+}
+
+.closeBtn:hover {
+  opacity: 0.4;
+}
+
+/* ── Scrollable body ──────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+.empty {
+  padding: 40px 24px;
+  font-size: 11px;
+  color: var(--cd-mid);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ── Cart Item ────────────────────────────────────────────────────── */
+.item {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: 14px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--cd-light);
+  animation: itemIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes itemIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.itemThumb {
+  width: 90px;
+  height: 90px;
+  background: #eeebe5;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.itemThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.itemThumbPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: #e4e1db;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.itemBrand {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cd-mid);
+}
+
+.itemName {
+  font-family: var(--cd-font-display);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.itemVariant {
+  font-size: 9px;
+  color: var(--cd-mid);
+  margin-top: 1px;
+}
+
+.itemPrice {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  color: var(--cd-mid);
+  font-size: 10px;
+}
+
+.salePrice {
+  color: var(--cd-sale);
+  font-size: 10.5px;
+}
+
+.shipDate {
+  font-size: 9px;
+  color: var(--cd-mid);
+  margin-top: 2px;
+}
+
+.qtyRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.qtyBtn {
+  width: 22px;
+  height: 22px;
+  background: none;
+  border: 1px solid var(--cd-light);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cd-black);
+  transition: border-color 0.15s;
+  font-family: var(--cd-font-body);
+}
+
+.qtyBtn:hover {
+  border-color: var(--cd-black);
+}
+
+.qtyNum {
+  font-size: 11px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.removeBtn {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cd-mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  padding-top: 2px;
+  white-space: nowrap;
+  font-family: var(--cd-font-body);
+  transition: color 0.15s;
+}
+
+.removeBtn:hover {
+  color: var(--cd-black);
+}
+
+/* ── Upsell ───────────────────────────────────────────────────────── */
+.upsell {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--cd-light);
+}
+
+.upsellTitle {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cd-mid);
+  margin-bottom: 14px;
+}
+
+.upsellGrid {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.upsellGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.upsellItem {
+  flex-shrink: 0;
+  width: 100px;
+  cursor: pointer;
+}
+
+.upsellThumb {
+  width: 100px;
+  height: 100px;
+  background: #f0eeea;
+  margin-bottom: 8px;
+  transition: background 0.2s;
+}
+
+.upsellItem:hover .upsellThumb {
+  background: #e6e4df;
+}
+
+.upsellName {
+  font-family: var(--cd-font-display);
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--cd-black);
+}
+
+.upsellPrice {
+  font-size: 9px;
+  color: var(--cd-mid);
+  margin-top: 3px;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+.footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--cd-light);
+  flex-shrink: 0;
+}
+
+.freeShip {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cd-mid);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.subtotalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.subtotalLabel {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cd-mid);
+}
+
+.subtotalAmount {
+  font-family: var(--cd-font-display);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.footerBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.btnUpdate {
+  padding: 13px;
+  background: none;
+  border: 1px solid var(--cd-light);
+  font-family: var(--cd-font-body);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--cd-black);
+  transition: border-color 0.15s;
+}
+
+.btnUpdate:hover {
+  border-color: var(--cd-black);
+}
+
+.btnCheckout {
+  padding: 13px;
+  background: var(--cd-black);
+  border: 1px solid var(--cd-black);
+  font-family: var(--cd-font-body);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--cd-white);
+  transition: background 0.2s;
+}
+
+.btnCheckout:hover {
+  background: #333;
+}
+
+.viewCart {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cd-mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-family: var(--cd-font-body);
+  transition: color 0.15s;
+}
+
+.viewCart:hover {
+  color: var(--cd-black);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 440px) {
+  :root {
+    --cd-drawer-w: 100vw;
+  }
+}

@@ -1,0 +1,510 @@
+/* ── Career.css ── */
+
+.car-page {
+  min-height: 100vh;
+  background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+}
+
+/* ── JOBS LIST ── */
+.car-list {
+  max-width: 500px;
+  padding: 40px 24px 80px;
+}
+
+.car-list__heading {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #111;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.car-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #e8e8e8;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.car-list__item:first-of-type { border-top: 1px solid #e8e8e8; }
+.car-list__item:hover { opacity: 0.55; }
+
+.car-list__title {
+  font-size: 12px;
+  color: #111;
+  margin-bottom: 2px;
+  font-weight: 400;
+}
+
+.car-list__meta {
+  font-size: 11px;
+  color: #666;
+}
+
+.car-list__arrow {
+  font-size: 18px;
+  color: #999;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+/* ── JOB DETAIL WRAPPER ── */
+.car-detail {
+  position: relative;
+}
+
+/* VIEW ALL JOBS — sticky top */
+.car-view-all-btn {
+  position: sticky;
+  top: 0;
+  display: block;
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid #e8e8e8;
+  width: 100%;
+  text-align: left;
+  padding: 14px 24px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111;
+  cursor: pointer;
+  font-family: inherit;
+  z-index: 10;
+  transition: opacity 0.15s;
+}
+.car-view-all-btn:hover { opacity: 0.5; }
+
+.car-detail__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* Back to jobs link */
+.car-back-link {
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: #111;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+  margin-bottom: 24px;
+  display: block;
+  transition: opacity 0.15s;
+}
+.car-back-link:hover { opacity: 0.5; }
+
+/* Header row */
+.car-detail__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.car-detail__title {
+  font-size: 22px;
+  font-weight: 400;
+  color: #111;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.car-detail__location {
+  font-size: 12px;
+  color: #555;
+}
+
+.car-apply-btn {
+  flex-shrink: 0;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.car-apply-btn:hover { background: #333; }
+
+.car-detail__desc {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+
+/* Sections */
+.car-detail__section {
+  margin-bottom: 24px;
+}
+
+.car-detail__section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 14px;
+}
+
+/* ── NESTED DUTIES LIST ── */
+.car-detail__cat-list {
+  list-style: disc;
+  padding-left: 18px;
+}
+
+.car-detail__cat-list > li {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.car-detail__sub-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 4px;
+}
+
+.car-detail__sub-list li {
+  font-size: 13px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 3px;
+}
+
+/* Flat qualifications list */
+.car-detail__list {
+  list-style: disc;
+  padding-left: 18px;
+}
+.car-detail__list li {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 4px;
+}
+
+.car-detail__salary {
+  font-size: 13px;
+  color: #111;
+  margin: 24px 0 16px;
+}
+
+.car-detail__brand {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+/* ── JOB ALERT BOX ── */
+.car-alert-box {
+  display: flex;
+  gap: 14px;
+  border: 1px solid #d8d8d8;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.car-alert-box__icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.car-alert-box__title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.car-alert-box__sub {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.car-alert-link {
+  font-size: 12px;
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.car-alert-link:hover { opacity: 0.5; }
+
+/* ── APPLICATION FORM ── */
+.car-apply-form {
+  margin-top: 16px;
+}
+
+.car-apply-form__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.car-apply-form__title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.car-apply-form__required {
+  font-size: 11px;
+  color: #888;
+}
+
+.car-greenhouse-btn {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 11px;
+  font-family: inherit;
+  color: #111;
+  text-decoration: none;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.car-greenhouse-btn:hover { border-color: #111; background: #f8f8f8; }
+
+/* Fields */
+.car-field { margin-bottom: 14px; }
+
+.car-field--row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.car-field__label {
+  font-size: 11px;
+  color: #111;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.car-input {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  padding: 12px 14px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #111;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  border-radius: 0;
+}
+.car-input:focus { border-color: #111; }
+.car-input::placeholder { color: #999; }
+
+.car-select-wrap { position: relative; flex-shrink: 0; width: 140px; }
+.car-select {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  padding: 12px 32px 12px 14px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #111;
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+  height: 100%;
+}
+.car-select-arrow {
+  position: absolute;
+  right: 10px; top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 10px; color: #888;
+}
+
+/* FIX: file buttons side by side (row), not stacked */
+.car-file-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.car-file-btn {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 12px;
+  font-family: inherit;
+  color: #111;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-align: center;
+  white-space: nowrap;
+}
+.car-file-btn:hover { border-color: #111; }
+
+.car-file-name { font-size: 11px; color: #3a7a3a; margin-bottom: 4px; }
+.car-file-types { font-size: 10px; color: #999; letter-spacing: 0.02em; }
+
+.car-textarea {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  padding: 12px 14px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #111;
+  background: #fff;
+  outline: none;
+  resize: vertical;
+  margin-top: 8px;
+  transition: border-color 0.2s;
+}
+.car-textarea:focus { border-color: #111; }
+
+.car-apply-form__submit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.car-submit-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 28px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+.car-submit-btn:hover { background: #333; }
+
+/* Submitted */
+.car-submitted {
+  max-width: 500px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 0 24px;
+}
+.car-submitted__title { font-size: 18px; font-weight: 400; margin-bottom: 12px; }
+.car-submitted__sub { font-size: 13px; color: #555; line-height: 1.7; margin-bottom: 28px; }
+
+.car-back-btn {
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: #111;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+  transition: opacity 0.15s;
+}
+.car-back-btn:hover { opacity: 0.5; }
+
+/* ══════════════════════════════
+   MOBILE — max-width: 600px
+══════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* List page */
+  .car-list {
+    padding: 32px 16px 60px;
+    max-width: 100%;
+  }
+
+  /* Sticky bar */
+  .car-view-all-btn {
+    padding: 14px 16px;
+  }
+
+  /* Detail inner */
+  .car-detail__inner {
+    padding: 24px 16px 60px;
+  }
+
+  /* Title slightly smaller on mobile */
+  .car-detail__title {
+    font-size: 20px;
+  }
+
+  /* Header: stack title above Apply button on narrow screens */
+  .car-detail__header {
+    flex-wrap: wrap;
+  }
+
+  /* Apply button full width on mobile */
+  .car-apply-btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 12px;
+  }
+
+  /* Phone row: stack country + phone on very small screens */
+  .car-field--row {
+    flex-direction: column;
+  }
+  .car-select-wrap {
+    width: 100%;
+  }
+  .car-select {
+    height: 44px;
+  }
+
+  /* Form header: stack title + greenhouse button */
+  .car-apply-form__header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .car-greenhouse-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Submit button full width on mobile */
+  .car-apply-form__submit-row {
+    justify-content: stretch;
+  }
+  .car-submit-btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 28px;
+  }
+
+  /* Alert box tighter on mobile */
+  .car-alert-box {
+    padding: 16px;
+  }
+}

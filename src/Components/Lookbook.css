@@ -1,0 +1,246 @@
+/* ── Lookbook wrapper ─────────────────────────────────── */
+.lookbook {
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    min-height: 100vh;
+}
+
+/* ── Hero header ──────────────────────────────────────── */
+.lookbook-hero {
+    text-align: center;
+    padding: 48px 24px 32px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.lookbook-date {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin: 0 0 10px;
+}
+
+.lookbook-title {
+    font-family: 'Libre Caslon Display', 'Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin: 0 0 16px;
+    color: #1a1a1a;
+}
+
+.lookbook-collection-link {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.lookbook-collection-link:hover { opacity: 0.45; }
+
+/* ── Lookbook image grid ──────────────────────────────── */
+/*
+  ALD: 2-col portrait grid, images flush with subtle gap.
+  Max width constrained and centered.
+*/
+.lookbook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 960px;
+    margin: 0 auto 0;
+    padding: 2px clamp(16px, 4vw, 60px) 0;
+}
+
+.lookbook-cell {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #e8e6e0;
+}
+
+.lookbook-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.lookbook-cell:hover img { transform: scale(1.02); }
+
+/* ── Collection bar ───────────────────────────────────── */
+/*
+  Matches the entry bar style exactly — same padding, same font, same border.
+*/
+.lookbook-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px clamp(16px, 4vw, 60px);
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    margin-top: 48px;
+}
+
+.lookbook-bar-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+.lookbook-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.lookbook-bar-btn {
+    all: unset;
+    cursor: pointer;
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    transition: opacity 0.2s;
+}
+.lookbook-bar-btn:hover { opacity: 0.4; }
+
+/* ── Products grid ────────────────────────────────────── */
+/*
+  Same grid rules as main product grid — 4 col desktop, 2 col mobile.
+  gap: 1px matches the updated product grid gap.
+*/
+.lookbook-products {
+    display: grid;
+    gap: 12px;
+    padding: 0 clamp(16px, 4vw, 60px) 80px;
+}
+
+.lookbook-product {
+    cursor: pointer;
+    
+}
+
+.lookbook-product-image {
+    aspect-ratio: 3 / 4;
+    background: #f2f2f0;
+    overflow: hidden;
+    position: relative;
+}
+
+.lookbook-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.lookbook-product:hover .lookbook-product-image img { transform: scale(1.02); }
+
+.lookbook-product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 9px 2px 12px;
+    gap: 8px;
+}
+
+.lookbook-product-name {
+    font-size: 11px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lookbook-product-price {
+    font-size: 11px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.45;
+}
+
+/* ── Mobile ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .lookbook-hero {
+        padding: 32px 16px 24px;
+    }
+
+    .lookbook-title {
+        font-size: 18px;
+    }
+
+    .lookbook-grid {
+        padding: 2px 12px 0;
+        gap: 3px;
+        
+    }
+
+    .lookbook-bar {
+        padding: 11px 16px;
+    }
+
+    .lookbook-bar-label,
+    .lookbook-bar-btn {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+    }
+
+    .lookbook-bar-actions {
+        gap: 16px;
+    }
+
+    .lookbook-products {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px 12px 60px;
+        gap: 5px;
+    }
+
+    .lookbook-product-info {
+        flex-direction: column;
+        gap: 2px;
+        padding: 7px 1px 10px;
+    }
+
+    .lookbook-product-name,
+    .lookbook-product-price {
+        font-size: 10px;
+        white-space: normal;
+    }
+
+    .lookbook-product-name {
+        overflow: visible;
+        text-overflow: clip;
+    }
+}
+
+@media (max-width: 480px) {
+    .lookbook-title {
+        font-size: 16px;
+    }
+}
+
+
+.lookbook-products--compact .lookbook-product-info {
+    display: none;
+}
+
+
+
+.lookbook-products--compact .lookbook-product-info {
+    display: none;
+}

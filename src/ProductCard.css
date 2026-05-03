@@ -1,0 +1,188 @@
+/* ── Product Card ─────────────────────────────────────── */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    background: #fff;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* ── Image container ──────────────────────────────────── */
+.product-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #f2f2f0;
+    position: relative;
+}
+
+/* ── Slider ───────────────────────────────────────────── */
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+.slide-img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;  /* ALD images are top-aligned (shows face/torso) */
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Very subtle scale on hover — ALD is restrained */
+.product-card:hover .slide-img {
+    transform: scale(1.02);
+}
+
+
+/* ── Image line indicators ── */
+.slider-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 0;                     /* start from left edge */
+    transform: none;             /* no centering */
+    display: flex;
+    gap: 3px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.product-image:hover .slider-dots {
+    opacity: 1;
+}
+
+.dot {
+    width: 36px;       /* was 24px — longer */
+    height: 3px;       /* was 2px — thicker */
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.15);
+    transition: background 0.2s;
+    margin-left: 8px;
+}
+
+.dot.active {
+    background: rgba(0, 0, 0, 0.75);
+}
+.product-card:hover .slider-dots {
+    opacity: 1;
+}
+
+/* ── Product info ─────────────────────────────────────── */
+/*
+  ALD layout: name + colors on the left, price on the right.
+  Very tight padding, small text, minimal spacing.
+*/
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 9px 0 12px;        /* ALD has almost no horizontal padding — text sits flush */
+    background: #fff;
+}
+
+.product-info-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.product-name {
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    margin: 0;
+    /* Prevent long names from breaking layout */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-colors {
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #999;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.product-price {
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.45;
+}
+
+.product-price.sold-out {
+    color: #999;
+}
+
+.product-card--compact .product-info {
+  display: none;
+}
+
+/* ── Mobile ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .product-info {
+        flex-direction: column;   /* ← stack instead of side by side */
+        align-items: flex-start;
+        gap: 2px;
+        padding: 7px 0 10px;
+    }
+
+    .product-name,
+    .product-colors,
+    .product-price {
+        font-size: 10px;
+        white-space: normal;      /* ← allow wrapping on small screens */
+    }
+
+    .product-name {
+        overflow: visible;
+        text-overflow: clip;      /* ← don't truncate name on mobile */
+        white-space: normal;
+    }
+}
+
+.product-card--compact {
+  cursor: pointer;
+}
+
+
+ 
+/* Remove any bottom padding/gap when info is hidden */
+.product-card--compact .product-image {
+  margin-bottom: 0;
+}
+ 
+/* Hide dots in compact mode — too small to be useful */
+.product-card--compact .slider-dots {
+  display: flex;
+}
+ 
+@media (max-width: 640px) {
+    .slider-dots {
+        display: flex;
+    }
+
+    .dot {
+        width: 20px;      /* slightly shorter on mobile to fit smaller cards */
+        height: 2.5px;
+    }
+}

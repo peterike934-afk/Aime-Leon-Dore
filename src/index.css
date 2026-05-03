@@ -1,0 +1,195 @@
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ── HTML / Body ──────────────────────────────────────────────────────────── */
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+    background-color: transparent;
+    overscroll-behavior: none;  
+}
+
+body {
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    background-color: transparent;
+    color: #1a1a1a;
+    letter-spacing: 0.01em;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+     overscroll-behavior: none;          
+    -webkit-overflow-scrolling: auto;
+}
+
+/* ── Focus visible ────────────────────────────────────────────────────────── */
+:focus-visible {
+    outline: 1px solid #1a1a1a;
+    outline-offset: 2px;
+}
+
+/* ── Responsive utilities ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .desktop-only { display: none !important; }
+}
+@media (min-width: 769px) {
+    .mobile-only  { display: none !important; }
+}
+
+/* ── Entry bar ────────────────────────────────────────────────────────────── */
+.entry-container {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+    transform: translateY(0);
+    transition: transform 0.25s ease;
+}
+
+.entry-container--hidden {
+    transform: translateY(-100%);
+}
+
+.shop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px clamp(16px, 4vw, 60px);
+    border-bottom: 1px solid #e8e8e8;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.shop-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.shopp {
+    all: unset;
+    cursor: pointer;
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #1a1a1a;
+    transition: opacity 0.2s;
+}
+.shopp:hover { opacity: 0.4; }
+
+.shop-divider {
+    font-size: 11px;
+    color: #bbb;
+    line-height: 1;
+}
+
+.shop-category {
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: #1a1a1a;
+}
+
+.shop-category-clear {
+    all: unset;
+    cursor: pointer;
+    font-size: 14px;
+    color: #999;
+    line-height: 1;
+    font-weight: 300;
+    transition: opacity 0.2s;
+    margin-left: 4px;
+}
+.shop-category-clear:hover { opacity: 0.4; }
+
+.shop-holder {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.refine,
+.sort {
+    all: unset;
+    cursor: pointer;
+    font-family: 'Founders Grotesk', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #1a1a1a;
+    transition: opacity 0.2s;
+}
+.refine:hover,
+.sort:hover { opacity: 0.4; }
+
+@media (max-width: 768px) {
+    .shop { padding: 11px 16px; }
+    .shopp, .refine, .sort {
+        font-size: 10px;
+        letter-spacing: 0.08em;
+    }
+    .shop-holder { gap: 16px; }
+}
+
+/* ── Product Grid ─────────────────────────────────────────────────────────── */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 0 clamp(8px, 1.5vw, 20px); 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-grid .product-info {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+@media (max-width: 1024px) {
+    .product-grid:not(.product-grid--compact) { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+    .product-grid:not(.product-grid--compact) {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 4;
+    }
+    .product-grid:not(.product-grid--compact) .product-info {
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+}
+
+/* ── Compact (8-per-row) ──────────────────────────────────────────────────── */
+.product-grid--compact {
+    grid-template-columns: repeat(8, 1fr) !important;
+}
+
+@media (max-width: 1024px) {
+    .product-grid--compact {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .product-grid--compact {
+        grid-template-columns: repeat(4, 1fr) !important;
+        padding: 0 12px;
+    }
+}
