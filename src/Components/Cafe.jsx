@@ -165,6 +165,17 @@ const allMenuItems = menuSections.flatMap(s => s.categories.flatMap(c => c.items
 // ── Accordion Section ────────────────────────────────────────────
 function AccordionSection({ section, hoveredItem, onHover, isMobile }) {
   const [open, setOpen] = useState(false)
+  const [tappedItem, setTappedItem] = useState(null)
+
+  const handleItemTap = (item) => {
+    if (!isMobile) {
+      onHover(item)
+      return
+    }
+    // toggle: tap same item again to close image
+    setTappedItem(prev => prev?.name === item.name ? null : item)
+    onHover(item)
+  }
 
   return (
     <div style={{ borderBottom: "1px solid #e8e8e8" }}>
@@ -180,39 +191,25 @@ function AccordionSection({ section, hoveredItem, onHover, isMobile }) {
         </span>
         <span style={{
           fontSize: "22px", fontWeight: 300,
-          transform: open ? "rotate(45deg)" : "rotate(0deg)",
-          transition: "transform 0.2s ease",
           display: "inline-block", lineHeight: 1,
         }}>
-          {open ? "—" : "+"}
+          {open ? "−" : "+"}
         </span>
       </div>
 
       {open && (
-        <>
-          {isMobile && (
-            <div style={{
-              width: "100%", aspectRatio: "4/3",
-              background: "#f2f2f2", overflow: "hidden", marginBottom: "16px",
-            }}>
-              <img
-                src={hoveredItem?.src || "/cafe/menu-default.jpg"}
-                alt={hoveredItem?.name || ""}
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              />
-            </div>
-          )}
-
-          <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "16px" }}>
-            <tbody>
-              {section.categories.map((cat, ci) =>
-                cat.items.map((item, ii) => (
+        <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "16px" }}>
+          <tbody>
+            {section.categories.map((cat, ci) =>
+              cat.items.map((item, ii) => (
+                <>
                   <tr
                     key={`${ci}-${ii}`}
-                    onMouseEnter={() => onHover(item)}
-                    onTouchStart={() => onHover(item)}
+                    onMouseEnter={() => !isMobile && onHover(item)}
+                    onClick={() => handleItemTap(item)}
                     style={{
-                      borderBottom: "1px solid #e8e8e8", cursor: "default",
+                      borderBottom: isMobile && tappedItem?.name === item.name ? "none" : "1px solid #e8e8e8",
+                      cursor: isMobile ? "pointer" : "default",
                       borderTop: ii === 0 && ci > 0 ? "1px solid #1a1a1a" : "none",
                     }}
                   >
@@ -239,11 +236,31 @@ function AccordionSection({ section, hoveredItem, onHover, isMobile }) {
                       {item.name}
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </>
+
+                  {/* Inline image row — mobile only, shows below tapped item */}
+                  {isMobile && tappedItem?.name === item.name && (
+                    <tr key={`${ci}-${ii}-img`}>
+                      <td style={{ padding: 0, borderRight: "1px solid #1a1a1a", borderBottom: "1px solid #e8e8e8", width: "80px" }} />
+                      <td style={{ padding: "12px 0 12px 16px", borderBottom: "1px solid #e8e8e8" }}>
+                        <div style={{
+                          width: "100%", aspectRatio: "3/4",
+                          background: "#f2f2f2", overflow: "hidden",
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                        }}>
+                          <img
+                            src={item.src}
+                            alt={item.name}
+                            style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </>
+              ))
+            )}
+          </tbody>
+        </table>
       )}
     </div>
   )
@@ -312,11 +329,11 @@ export default function Cafe() {
 
         {/* ── Sticky nav ── */}
         <div style={{
-          position: "relative", top: 52, background: "#fff", zIndex: 100,
+          position: "sticky", top: 0, background: "#fff", zIndex: 100,
           display: "flex", gap: isMobile ? "16px" : "32px",
           padding: isMobile ? "12px 16px" : "14px 24px",
           justifyContent: "center",
-          marginTop: "-52px",
+          marginTop: "0",
           overflowX: "auto",
           scrollbarWidth: "none",
         }}>
@@ -405,13 +422,12 @@ export default function Cafe() {
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
 
-              {/* ── Left: sticky image + name below ── */}
+              {/* Left: sticky image */}
               <div style={{
                 position: "sticky", top: 90,
                 height: "calc(100vh - 90px)",
                 display: "flex", flexDirection: "column",
               }}>
-                {/* Image fills available space */}
                 <div style={{ flex: 1, background: "#f2f2f2", overflow: "hidden" }}>
                   <img
                     src={hoveredItem?.src || "/cafe/menu-default.jpg"}
@@ -423,8 +439,6 @@ export default function Cafe() {
                     }}
                   />
                 </div>
-
-                {/* Name sits outside the card, below, left-aligned */}
                 <p style={{
                   margin: "10px 0 0 0",
                   fontSize: "9px", letterSpacing: "0.12em",
@@ -435,7 +449,7 @@ export default function Cafe() {
                 </p>
               </div>
 
-              {/* ── Right: accordion list ── */}
+              {/* Right: accordion list */}
               <div style={{ padding: "0 40px" }}>
                 {menuSections.map((section, si) => (
                   <AccordionSection
@@ -452,21 +466,50 @@ export default function Cafe() {
         </div>
 
         {/* ── History photos ── */}
-        <div id="history" style={{
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
-          gap: isMobile ? "8px" : "12px",
-          padding: isMobile ? "0 16px" : "0",
-          marginBottom: isMobile ? "60px" : "80px",
-        }}>
-          {["/hst1.png", "/hst2.png"].map((imgPath, i) => (
-            <div key={i} style={{ aspectRatio: "3/4", background: "#e8e8e8", overflow: "hidden" }}>
-              <img
-                src={imgPath} alt=""
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              />
+        <div id="history" style={{ marginBottom: isMobile ? "60px" : "80px" }}>
+          {isMobile ? (
+            <div style={{
+              display: "flex",
+              overflowX: "auto",
+              scrollSnapType: "x mandatory",
+              WebkitOverflowScrolling: "touch",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              paddingLeft: "16px",
+              gap: "10px",
+            }}>
+              {["/hst1.png", "/hst2.png"].map((imgPath, i) => (
+                <div key={i} style={{
+                  flex: "0 0 88%",
+                  scrollSnapAlign: "start",
+                  aspectRatio: "3/4",
+                  background: "#e8e8e8",
+                  overflow: "hidden",
+                }}>
+                  <img
+                    src={imgPath} alt=""
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                </div>
+              ))}
+              <div style={{ flex: "0 0 6px" }} />
             </div>
-          ))}
+          ) : (
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: "12px",
+            }}>
+              {["/hst1.png", "/hst2.png"].map((imgPath, i) => (
+                <div key={i} style={{ aspectRatio: "3/4", background: "#e8e8e8", overflow: "hidden" }}>
+                  <img
+                    src={imgPath} alt=""
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* ── Shop ── */}
